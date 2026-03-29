@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
-  <meta charset="UTF-8">
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="Umang Kuwar — Senior .NET Developer & Automation Specialist. 5+ years building scalable web apps, AutoCAD plugins, and cloud solutions.">
 <meta name="keywords" content="Umang Kuwar, .NET Developer, Automation, ASP.NET, C#, Azure, AutoCAD Plugin, Pune">
@@ -528,30 +527,32 @@
 
       <div class="contact-form-wrap reveal-right">
         <form class="contact-form" id="contactForm">
-          <div class="cf-row">
-            <div class="cf-group">
-              <label>Your Name</label>
-              <input type="text" placeholder="John Smith" required>
-            </div>
-            <div class="cf-group">
-              <label>Email Address</label>
-              <input type="email" placeholder="john@company.com" required>
-            </div>
-          </div>
-          <div class="cf-group">
-            <label>Subject</label>
-            <input type="text" placeholder="Project inquiry / Job opportunity...">
-          </div>
-          <div class="cf-group">
-            <label>Message</label>
-            <textarea rows="5" placeholder="Tell me about your project or opportunity..." required></textarea>
-          </div>
-          <button type="submit" class="btn-primary" style="width:100%;justify-content:center">
-            <span class="btn-bg"></span>
-            <span class="btn-text">Send Message</span>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><line x1="22" y1="2" x2="11" y2="13" stroke="currentColor" stroke-width="1.5"/><polygon points="22 2 15 22 11 13 2 9 22 2" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>
-          </button>
-        </form>
+  <div class="cf-row">
+    <div class="cf-group">
+      <label>Your Name</label>
+      <input type="text" name="name" placeholder="John Smith" required>
+    </div>
+    <div class="cf-group">
+      <label>Email Address</label>
+      <input type="email" name="email" placeholder="john@company.com" required>
+    </div>
+  </div>
+
+  <div class="cf-group">
+    <label>Subject</label>
+    <input type="text" name="subject" placeholder="Project inquiry / Job opportunity...">
+  </div>
+
+  <div class="cf-group">
+    <label>Message</label>
+    <textarea name="message" rows="5" placeholder="Tell me about your project..." required></textarea>
+  </div>
+
+  <button type="submit" class="btn-primary" style="width:100%;justify-content:center">
+    <span class="btn-bg"></span>
+    <span class="btn-text">Send Message</span>
+  </button>
+</form>
       </div>
     </div>
   </div>
@@ -567,5 +568,26 @@
 </footer>
 
 <script src="script.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+
+<script>
+(function(){
+  emailjs.init("76HBZPz9vmptxoNNm");
+})();
+
+document.getElementById("contactForm").addEventListener("submit", function(e) {
+  e.preventDefault();
+
+  emailjs.sendForm("service_3uhl16q", "template_d51yfq3", this)
+    .then(function() {
+      alert("✅ Message sent successfully!");
+    }, function(error) {
+      alert("❌ Failed to send message");
+      console.log(error);
+    });
+});
+</script>
+
 </body>
 </html>
